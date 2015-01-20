@@ -58,7 +58,7 @@ public class DetailRecordFragment extends Fragment {
 
         //dr = activity.mToolbar.getNavigationIcon();
         //activity.mToolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
@@ -139,5 +139,6 @@ public class DetailRecordFragment extends Fragment {
     public void onStop() {
         super.onStop();
         //activity.mToolbar.setNavigationIcon(dr);
+        //activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 }
