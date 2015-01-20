@@ -1,0 +1,161 @@
+[{
+"id": 1,
+"job_id": 1,
+"title": "Колодки тормозные",
+"count": 2,
+"item_price": 5,
+"price": 10
+},
+{
+"id": 2,
+"job_id": 2,
+"title": "Диски тормозные",
+"count": 2,
+"item_price": 5,
+"price": 10
+},
+{
+"id": 3,
+"job_id": 3,
+"title": "Масло Shell 10W40",
+"count": 2,
+"item_price": 5,
+"price": 10
+},
+{
+"id": 4,
+"job_id": 3,
+"title": "Масяный фильтр VW CHN-15",
+"count": 2,
+"item_price": 5,
+"price": 10
+},
+{
+"id": 5,
+"job_id": 4,
+"title": "Топливный фильтр",
+"count": 1,
+"item_price": 14,
+"price": 14
+},
+{
+"id": 6,
+"job_id": 5,
+"title": "Воздушный фильтр",
+"count": 2,
+"item_price": 5,
+"price": 10
+},
+{
+"id": 7,
+"job_id": 6,
+"title": "Ремень ГРМ",
+"count": 1,
+"item_price": 30,
+"price": 30
+},
+{
+"id": 8,
+"job_id": 6,
+"title": "Помпа",
+"count": 1,
+"item_price": 20,
+"price": 20
+},
+{
+"id": 9,
+"job_id": 6,
+"title": "Натяжной ролик",
+"count": 1,
+"item_price": 8,
+"price": 8
+},
+{
+"id": 10,
+"job_id": 8,
+"title": "Глушитель",
+"count": 1,
+"item_price": 24,
+"price": 24
+},
+{
+"id": 11,
+"job_id": 8,
+"title": "Хомуты",
+"count": 2,
+"item_price": 3,
+"price": 6
+},
+{
+"id": 12,
+"job_id": 9,
+"title": "Тормозной цилиндрик",
+"count": 2,
+"item_price": 5,
+"price": 10
+},
+{
+"id": 13,
+"job_id": 9,
+"title": "Тормозные колодки",
+"count": 1,
+"item_price": 6,
+"price": 12
+},
+{
+"id": 14,
+"job_id": 9,
+"title": "Комплект флажков",
+"count": 1,
+"item_price": 7,
+"price": 7
+},
+{
+"id": 15,
+"job_id": 9,
+"title": "Тормозная жидкость",
+"count": 1,
+"item_price": 13,
+"price": 13
+},
+{
+"id": 16,
+"job_id": 10,
+"title": "Стойки задние",
+"count": 2,
+"item_price": 60,
+"price": 120
+},
+{
+"id": 17,
+"job_id": 11,
+"title": "Радиатор",
+"count": 1,
+"item_price": 40,
+"price": 40
+},
+{
+"id": 18,
+"job_id": 12,
+"title": "Насос ГУР",
+"count": 1,
+"item_price": 45,
+"price": 45
+},
+{
+"id": 19,
+"job_id": 13,
+"title": "Электродвигатель ЭДС-484",
+"count": 1,
+"item_price": 8,
+"price": 8
+},
+{
+"id": 20,
+"job_id": 13,
+"title": "Дворники",
+"count": 2,
+"item_price": 5,
+"price": 10
+}
+]

@@ -1,0 +1,79 @@
+[{
+"job_id": 1,
+"record_id": 1,
+"title": "Замена передних тормозных колодок",
+"job_price": 123
+},
+{
+"job_id": 2,
+"record_id": 1,
+"title": "Замена передних тормозных дисков",
+"job_price": 123
+},
+{
+"job_id": 3,
+"record_id": 1,
+"title": "Замена масла",
+"job_price": 123
+},
+{
+"job_id": 4,
+"record_id": 2,
+"title": "Замена топливного фильтра",
+"job_price": 123
+},
+{
+"job_id": 5,
+"record_id": 2,
+"title": "Замена воздушного фильтра",
+"job_price": 123
+},
+{
+"job_id": 6,
+"record_id": 3,
+"title": "Замена ремня ГРМ",
+"job_price": 123
+},
+{
+"job_id": 7,
+"record_id": 4,
+"title": "Регулировка фар",
+"job_price": 123
+},
+{
+"job_id": 8,
+"record_id": 5,
+"title": "Замена глушителя",
+"job_price": 123
+},
+{
+"job_id": 9,
+"record_id": 6,
+"title": "Ремонт тормозной системы",
+"job_price": 123
+},
+{
+"job_id": 10,
+"record_id": 6,
+"title": "Ремонт подвески",
+"job_price": 123
+},
+{
+"job_id": 11,
+"record_id": 7,
+"title": "Ремонт радиатора",
+"job_price": 123
+},
+{
+"job_id": 12,
+"record_id": 7,
+"title": "Ремонт гидроусилителя руля",
+"job_price": 123
+},
+{
+"job_id": 13,
+"record_id": 7,
+"title": "Замена электродивгателя привода заднего дворника",
+"job_price": 123
+}
+]

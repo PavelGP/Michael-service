@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="red">#f44336</color>
+    <color name="light_red">#ffcdd2</color>
+    <color name="dark_red">#b71c1c</color>-->
+
+    <color name="red">#2196f3</color>
+    <color name="light_red">#bbdefb</color>
+    <color name="dark_red">#0d47a1</color>
+
+    <color name="blue">#2196f3</color>
+    <color name="light_blue">#bbdefb</color>
+    <color name="dark_blue">#0d47a1</color>
+    <color name="white">#FFFFFF</color>
+
+    <!--Оттенки черного использовать в соответствии с концепцией материального дизайна-->
+    <color name="black87">#DE000000</color>
+    <color name="black54">#8A000000</color>
+    <color name="black26">#42000000</color>
+    <color name="black12">#1F000000</color>
+    <color name="black">#000000</color>
+</resources>

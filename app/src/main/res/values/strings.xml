@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">АвтоМастерГрупп</string>
+    <string name="fragment_title_garage">Гараж</string>
+    <string name="fragment_title_records">Записи</string>
+    <string name="fragment_title_statistic">Статистика</string>
+    <string name="fragment_title_response">Оставить отзыв</string>
+    <string name="fragment_title_about">О нас</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="km">км</string>
+    <string name="dollar">$</string>
+    <string name="works">Выполненные работы:</string>
+    <string name="comment">Комментарии</string>
+    <string name="car_1">VW Passat CC 2.0 TDI</string>
+    <string name="car_2">VW Golf 3 1.6 CE</string>
+    <string name="total_detail_price">Всего за детали</string>
+    <string name="total_work_price">Всего за работу</string>
+    <string name="total_price">Итого</string>
+    <string name="phone">+375 29 311 33 00 (Velcom)</string>
+</resources>
