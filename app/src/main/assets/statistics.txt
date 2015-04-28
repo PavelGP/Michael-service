@@ -1,0 +1,26 @@
+[{
+"id": 1,
+"car_id": 1,
+"mileage": 157986,
+"yearly_mileage": 12345,
+"monthly_mileage": 1102,
+"daily_mileage": 41,
+"all_exp": 15215300,
+"yearly_exp": 5142750,
+"monthly_exp": 312000,
+"daily_exp": 12450,
+"100km_exp": 11150
+},
+{
+"id": 2,
+"car_id": 2,
+"mileage": 307986,
+"yearly_mileage": 25347,
+"monthly_mileage": 2876,
+"daily_mileage": 114,
+"all_exp": 35215300,
+"yearly_exp": 11142750,
+"monthly_exp": 8142750,
+"daily_exp": 45450,
+"100km_exp": 13450
+}]

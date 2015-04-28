@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <CheckBox
+        android:id="@+id/chb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:id="@+id/rlModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tvMake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:text="VW" />
+
+        <TextView
+            android:id="@+id/tvModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tvMake"
+            android:layout_toRightOf="@id/tvMake"
+            android:layout_toEndOf="@id/tvMake"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:text="Passat" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlModel"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tvYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/black54"
+            android:text="2009" />
+
+        <TextView
+            android:id="@+id/tvYearDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_toRightOf="@id/tvYear"
+            android:layout_toEndOf="@id/tvYear"
+            android:layout_alignBaseline="@id/tvYear"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/black54"
+            android:text="@string/date_of_edition" />
+
+        <TextView
+            android:id="@+id/tvRegNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tvYear"
+            android:layout_toRightOf="@id/tvYearDescription"
+            android:layout_toEndOf="@id/tvYearDescription"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/black54"
+            android:text="1234-5 AA" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="by.of.servicebook.myapplication.fragments.SettingsFragment">
+
+    <RelativeLayout
+        android:id="@+id/rlLogout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/sel_settings"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:text="@string/logout"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/primary_material_light"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlTermsOfUse"
+        android:layout_below="@id/rlLogout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:clickable="true"
+        android:background="@drawable/sel_settings">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:text="@string/terms_of_use"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/primary_material_light"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlWriteUs"
+        android:layout_below="@id/rlTermsOfUse"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:clickable="true"
+        android:background="@drawable/sel_settings">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:text="@string/write_us"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/primary_material_light"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+[{
+"id": 1,
+"make": "BMW",
+"model": "Z4",
+"year": 2006,
+"reg_number": "1234-5 AA",
+"VIN_code": "4USBT53544LT26841",
+"color": "Синий металлик",
+"reg_date": "02-05-2011",
+"reg_mileage": 124075
+},
+{
+"id": 2,
+"make": "Chevrolet",
+"model": "Rezzo",
+"year": 2008,
+"reg_number": "6789-0 AA",
+"VIN_code": "KL1UF756E6B195928",
+"color": "Синий металлик",
+"reg_date": "24-11-2013",
+"reg_mileage": 199791
+}]
