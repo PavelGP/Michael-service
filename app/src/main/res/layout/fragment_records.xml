@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray"
     tools:context="by.of.servicebook.myapplication.fragments.RecordsFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -12,17 +13,19 @@
         android:gravity="center"
         android:background="@color/red">
         <TextView
-            android:id="@+id/car"
+            android:id="@+id/tvCar"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:gravity="center"
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-        </LinearLayout>
+    </LinearLayout>
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"/>
+
 </LinearLayout>

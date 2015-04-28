@@ -1,37 +1,35 @@
 package by.of.servicebook.myapplication.fragments;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
-import by.of.servicebook.myapplication.MainActivity;
+import java.util.List;
+
 import by.of.servicebook.myapplication.R;
+import by.of.servicebook.myapplication.activities.CarDetailsActivity;
+import by.of.servicebook.myapplication.activities.MainActivity;
+import by.of.servicebook.myapplication.adapters.CarsAdapter;
+import by.of.servicebook.myapplication.db.models.Car;
+import by.of.servicebook.myapplication.db.DataProvider;
 import by.of.servicebook.myapplication.utils.AppConst;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link GarageFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link GarageFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Created by Pavel on 21.04.2015.
  */
-public class GarageFragment extends Fragment implements View.OnClickListener {
+public class GarageFragment extends Fragment {
+
     private Activity activity;
-    private CheckBox chb1, chb2;
+    CarsAdapter adapter;
     SharedPreferences sharedPreferences;
 
-
-    // TODO: Rename and change types and number of parameters
     public static GarageFragment newInstance() {
         GarageFragment fragment = new GarageFragment();
 
@@ -43,74 +41,6 @@ public class GarageFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_garage, container, false);
-        chb1 =(CheckBox) v.findViewById(R.id.chb1);
-        chb2 =(CheckBox) v.findViewById(R.id.chb2);
-        chb1.setOnClickListener(this);
-        chb2.setOnClickListener(this);
-        sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int car = sharedPreferences.getInt(AppConst.VEHICLE, -1);
-        if (car==-1){
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(AppConst.VEHICLE, 1);
-            editor.apply();
-            car = 1;
-        }
-
-        if (car==1){
-            chb1.setChecked(true);
-            chb2.setChecked(false);
-        } else {
-            chb1.setChecked(false);
-            chb2.setChecked(true);
-        }
-
-        LinearLayout ll_1 = (LinearLayout) v.findViewById(R.id.car1);
-        LinearLayout ll_2 = (LinearLayout) v.findViewById(R.id.car2);
-
-        ll_1.setOnClickListener(this);
-        ll_2.setOnClickListener(this);
-
-        return v;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.chb1:
-                if (chb1.isChecked()) {
-                    chb1.setChecked(true);
-                    chb2.setChecked(false);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt(AppConst.VEHICLE, 1);
-                    editor.apply();
-                } else {
-                    chb1.setChecked(true);
-                }
-                break;
-            case R.id.chb2:
-                if (chb2.isChecked()) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt(AppConst.VEHICLE, 2);
-                    editor.apply();
-                    chb1.setChecked(false);
-                    chb2.setChecked(true);
-                } else {
-                    chb2.setChecked(true);
-                }
-                break;
-            case R.id.car1:
-                break;
-            case R.id.car2:
-                break;
-
-        }
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
@@ -119,8 +49,38 @@ public class GarageFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_newgarage, container, false);
+
+        sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int car = sharedPreferences.getInt(AppConst.VEHICLE, -1);
+        if (car==-1){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt(AppConst.VEHICLE, 1);
+            editor.apply();
+        }
+
+        ListView lvCars = (ListView) v.findViewById(R.id.lvCars);
+
+        List<Car> cars = DataProvider.getInstance().getAllCars();
+
+        adapter = new CarsAdapter(getActivity(), R.layout.item_car, cars, sharedPreferences);
+
+        lvCars.setAdapter(adapter);
+        lvCars.setOnItemClickListener(onItemClickListener);
+
+        return v;
     }
+
+    ListView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            int carId = adapter.getItem(position).key;
+
+            CarDetailsActivity.launch(getActivity(), carId);
+        }
+    };
+
 
 }

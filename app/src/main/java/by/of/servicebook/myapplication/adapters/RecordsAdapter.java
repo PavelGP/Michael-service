@@ -2,23 +2,18 @@ package by.of.servicebook.myapplication.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import by.of.servicebook.myapplication.R;
-import by.of.servicebook.myapplication.models.Job;
-import by.of.servicebook.myapplication.models.Record;
-import by.of.servicebook.myapplication.utils.AppConst;
+import by.of.servicebook.myapplication.db.models.Record;
 
 /**
  * Created by Pavel on 11.12.2014.
@@ -60,8 +55,8 @@ public class RecordsAdapter extends ArrayAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.date.setText(record.date);
-        viewHolder.price.setText(Long.toString(record.price));
-        viewHolder.mileage.setText(Integer.toString(record.mileage));
+        viewHolder.price.setText(String.format("%,d", record.price));
+        viewHolder.mileage.setText(String.format("%,d", record.mileage));
         int jobContainerCount = viewHolder.tvContainer.getChildCount();
         if (jobContainerCount > jobCount) {
             viewHolder.tvContainer.removeViews(jobCount, jobContainerCount - jobCount);

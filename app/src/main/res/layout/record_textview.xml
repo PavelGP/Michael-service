@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/red_dot"/>
+        android:src="@drawable/blue_dot"/>
     <TextView
         android:id="@+id/record"
         android:layout_width="wrap_content"

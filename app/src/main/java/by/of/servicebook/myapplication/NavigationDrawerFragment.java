@@ -19,10 +19,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.parse.ParseUser;
 
 import by.of.servicebook.myapplication.adapters.DrawerAdapter;
 
@@ -87,7 +87,7 @@ public class NavigationDrawerFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
-        setHasOptionsMenu(true);
+        //setHasOptionsMenu(true);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class NavigationDrawerFragment extends Fragment {
         View v = inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
 
-        mDrawerListView =(ListView) v.findViewById(R.id.navigation_listview);
+        mDrawerListView =(ListView) v.findViewById(R.id.lvSideMenu);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -108,23 +108,30 @@ public class NavigationDrawerFragment extends Fragment {
                 getString(R.string.fragment_title_garage),
                 getString(R.string.fragment_title_records),
                 getString(R.string.fragment_title_statistic),
-                getString(R.string.fragment_title_response),
-                getString(R.string.fragment_title_about),
+                getString(R.string.fragment_title_settings)
         };
 
         int[] images = new int[] {
             R.drawable.garage,
             R.drawable.records,
             R.drawable.statistic,
-            R.drawable.response,
-            R.drawable.about
+            R.drawable.tool,
         };
 
 
         mDrawerListView.setAdapter(new DrawerAdapter(getActivity(),
                 textTitle, images));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+
+        initAccount(v);
+
         return v;
+    }
+
+    void initAccount( View rootView){
+        TextView tvEmail = (TextView) rootView.findViewById(R.id.tvEmail);
+        ParseUser user = ParseUser.getCurrentUser();
+        tvEmail.setText(user.getUsername());
     }
 
     public boolean isDrawerOpen() {

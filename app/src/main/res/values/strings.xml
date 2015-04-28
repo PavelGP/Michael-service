@@ -1,26 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">АвтоМастерГрупп</string>
+    <string name="app_name">Michael</string>
     <string name="fragment_title_garage">Гараж</string>
     <string name="fragment_title_records">Записи</string>
     <string name="fragment_title_statistic">Статистика</string>
-    <string name="fragment_title_response">Оставить отзыв</string>
+    <string name="fragment_title_settings">Настройки</string>
     <string name="fragment_title_about">О нас</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="your_cars">Ваши автомобили</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- activity_splash.xml -->
+    <string name="service_book">Электронная сервисная книга</string>
+
+    <!-- activity_login.xml -->
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="enter">Войти</string>
+    <string name="bad_login_or_password">Неверный логин или пароль</string>
+    <string name="no_internet">Отсутствует интернет соединение</string>
+
+
+    <!-- item_car.xml -->
+    <string name="date_of_edition">г.в.,</string>
+
+    <!-- activity_car_details.xml -->
+    <string name="car_data">Сведения о транспортном средстве</string>
+    <string name="make">Марка</string>
+    <string name="model">Модель</string>
+    <string name="year">Год выпуска</string>
+    <string name="reg_number">Рег. номер</string>
+    <string name="vin_code">VIN код</string>
+    <string name="color">Цвет</string>
+    <string name="reg_data">Сведения о регистрации сервисной книги</string>
+    <string name="reg_date">Дата</string>
+    <string name="reg_mileage">Пробег</string>
+
+    <!-- fragment_navigation_drawer.xml -->
+    <string name="account">Учетная запись</string>
+
+    <!-- fragment_statistic.xml -->
+    <string name="current_mileage">Текущий пробег</string>
+    <string name="average_mileage">Усредненный пробег</string>
+    <string name="per_year">за год</string>
+    <string name="per_month">за месяц</string>
+    <string name="per_day">за день</string>
+    <string name="expenses_description">Расходы на ремонт ТС</string>
+    <string name="all">всего</string>
+    <string name="expenses_per_100">на 100 км</string>
+
+    <!-- fragment_settings.xml -->
+    <string name="logout">Сменить учетную запись</string>
+    <string name="terms_of_use">Условия использования</string>
+    <string name="write_us">Написать нам</string>
+
 
     <string name="km">км</string>
     <string name="dollar">$</string>
+    <string name="rubles">р.</string>
     <string name="works">Выполненные работы:</string>
     <string name="comment">Комментарии</string>
-    <string name="car_1">VW Passat CC 2.0 TDI</string>
-    <string name="car_2">VW Golf 3 1.6 CE</string>
     <string name="total_detail_price">Всего за детали</string>
     <string name="total_work_price">Всего за работу</string>
     <string name="total_price">Итого</string>
     <string name="phone">+375 29 311 33 00 (Velcom)</string>
+    <string name="title_activity_car_details">Сведения о ТС</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_detail_record">Запись</string>
+    <string name="nol">0</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+
 </resources>

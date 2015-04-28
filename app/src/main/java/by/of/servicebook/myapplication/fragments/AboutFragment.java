@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import by.of.servicebook.myapplication.MainActivity;
+import by.of.servicebook.myapplication.activities.MainActivity;
 import by.of.servicebook.myapplication.R;
 import by.of.servicebook.myapplication.utils.AppConst;
 

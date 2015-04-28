@@ -13,21 +13,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
-import by.of.servicebook.myapplication.MainActivity;
+import by.of.servicebook.myapplication.activities.DetailRecordActivity;
+import by.of.servicebook.myapplication.activities.MainActivity;
 import by.of.servicebook.myapplication.R;
 import by.of.servicebook.myapplication.adapters.RecordsAdapter;
-import by.of.servicebook.myapplication.models.Job;
-import by.of.servicebook.myapplication.models.Record;
-import by.of.servicebook.myapplication.providers.DataProvider;
+import by.of.servicebook.myapplication.db.models.Car;
+import by.of.servicebook.myapplication.db.models.Record;
+import by.of.servicebook.myapplication.db.DataProvider;
 import by.of.servicebook.myapplication.utils.AppConst;
 
 /**
@@ -62,26 +56,20 @@ public class RecordsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_records, container, false);
 
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int car_id = sharedPreferences.getInt(AppConst.VEHICLE, 1);
-        TextView tvCar = (TextView) rootView.findViewById(R.id.car);
-        if (car_id == 1){
-            tvCar.setText(getText(R.string.car_1));
-        } else {
-            tvCar.setText(getText(R.string.car_2));
-        }
+        int carId = sharedPreferences.getInt(AppConst.VEHICLE, 1);
+        Car car = provider.getCarById(carId);
+        TextView tvCar = (TextView) rootView.findViewById(R.id.tvCar);
+        tvCar.setText(car.make + " " + car.model);
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        List<Record> records = provider.getRecordsByCarId(car_id);
+        List<Record> records = provider.getRecordsByCarId(carId);
         adapter = new RecordsAdapter(getActivity(), records);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int record_id = ((Record)parent.getItemAtPosition(position)).key;
-                getActivity().getFragmentManager().beginTransaction()
-                        .replace(R.id.container, DetailRecordFragment.newInstance(record_id))
-                        .addToBackStack(null)
-                        .commit();
+                int recordId = ((Record)parent.getItemAtPosition(position)).key;
+                DetailRecordActivity.launch(getActivity(), recordId);
             }
         });
 
