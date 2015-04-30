@@ -57,7 +57,15 @@
     <string name="logout">Сменить учетную запись</string>
     <string name="terms_of_use">Условия использования</string>
     <string name="write_us">Написать нам</string>
-
+    <string name="logout_error">Ошибка авторизации. Попробуйте позже.</string>
+    <string name="project_email">servicebookofby@gmail.com</string>
+    <string name="email_subject">Отзыв о приложении</string>
+    <string name="choose_email_client">Выберите почтовый клиент</string>
+    <string name="no_email_clients">Отсутствуют почтовые клиенты</string>
+    <!-- Logout AlertDialog -->
+    <string name="warning_change_user">Вы действиетельно хотите сменить учетную запись?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 
     <string name="km">км</string>
     <string name="dollar">$</string>
@@ -74,5 +82,6 @@
     <string name="nol">0</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_terms_of_use">TermsOfUseActivity</string>
 
 </resources>
