@@ -19,6 +19,7 @@ public class ParseCar extends ParseObject {
     public static final String REG_DATE = "reg_date";
     public static final String REG_MILEAGE = "reg_mileage";
     public static final String RECORDS_RELATION = "records_relation";
+    public static final String STATISTIC_ID = "statistic_id";
 
     public ParseCar(){}
 

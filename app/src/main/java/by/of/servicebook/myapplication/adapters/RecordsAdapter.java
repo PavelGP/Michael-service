@@ -14,6 +14,7 @@ import java.util.List;
 
 import by.of.servicebook.myapplication.R;
 import by.of.servicebook.myapplication.db.models.Record;
+import by.of.servicebook.myapplication.utils.AppUtils;
 
 /**
  * Created by Pavel on 11.12.2014.
@@ -54,7 +55,7 @@ public class RecordsAdapter extends ArrayAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.date.setText(record.date);
+        viewHolder.date.setText(AppUtils.dateToString(record.date));
         viewHolder.price.setText(String.format("%,d", record.price));
         viewHolder.mileage.setText(String.format("%,d", record.mileage));
         int jobContainerCount = viewHolder.tvContainer.getChildCount();

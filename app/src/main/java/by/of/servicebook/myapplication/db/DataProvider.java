@@ -27,7 +27,7 @@ public class DataProvider {
         return instance;
     }
 
-    public Statistic getCarStatisticById(int carId){
+    public Statistic getCarStatisticById(String carId){
         return new Select().from(Statistic.class).where("key = ?", carId).executeSingle();
     }
 
@@ -43,29 +43,28 @@ public class DataProvider {
         return new Select().from(Car.class).execute();
     }
 
-    public Car getCarById(int id){
+    public Car getCarById(String id){
         return new Select().from(Car.class).where("key = ?", id).executeSingle();
     }
 
-    public List<Record> getRecordsByCarId(int car_id) {
-        List<Record> records = new Select().from(Record.class).where("car_id = ?", car_id).execute();
+    public List<Record> getRecordsByCarId(String carId) {
+        List<Record> records = new Select().from(Record.class).where("car_id = ?", carId)
+                .orderBy("date")
+                .execute();
         for (Record record:records){
-            record.jobList = new Select().from(Job.class).where("record_id = ?", record.key).execute();
+            record.jobList = new Select().from(Job.class).where("record_id = ?", record.key)
+                    .execute();
         }
         return records;
     }
 
-    public List<Detail> getDetails(){
-        return new Select().from(Detail.class).execute();
-    }
-
-    public Record getRecord(int id) {
+    public Record getRecord(String id) {
         Record record = new Select().from(Record.class).where("key = ?", id).executeSingle();
         record.jobList = new Select().from(Job.class).where("record_id = ?", id).execute();
         for (int i = 0; i < record.jobList.size(); i++) {
             record.jobList.get(i).detailList = new Select()
                     .from(Detail.class)
-                    .where("job_id = ?", record.jobList.get(i).job_id)
+                    .where("job_id = ?", record.jobList.get(i).id)
                     .execute();
         }
         return record;

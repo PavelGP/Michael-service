@@ -8,6 +8,9 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import by.of.servicebook.myapplication.parse.models.ParseRecord;
+import by.of.servicebook.myapplication.utils.AppUtils;
+
 /**
  * Created by Pavel on 09.12.2014.
  */
@@ -16,13 +19,13 @@ import java.util.List;
 public class Record extends Model {
 
     @Column(name = "key")
-    public int key;
+    public String key;
 
     @Column(name = "car_id")
-    public int car_id;
+    public String car_id;
 
     @Column(name = "date")
-    public String date;
+    public long date;
 
     @Column(name = "mileage")
     public int mileage;
@@ -42,7 +45,7 @@ public class Record extends Model {
         super();
     }
 
-    public Record(int id, int car_id, String date, int mileage, String serviceName, long price, String comment) {
+    public Record(String id, String car_id, long date, int mileage, String serviceName, long price, String comment) {
         this.key = id;
         this.car_id = car_id;
         this.date = date;
@@ -54,13 +57,24 @@ public class Record extends Model {
 
     public Record(JSONObject jsonObject) {
         super();
-        this.key = jsonObject.optInt("id");
-        this.car_id = jsonObject.optInt("car_id");
-        this.date = jsonObject.optString("date");
+        this.key = jsonObject.optString("id");
+        this.car_id = jsonObject.optString("car_id");
+        this.date = jsonObject.optLong("date");
         this.mileage = jsonObject.optInt("mileage");
         this.serviceName = jsonObject.optString("service_name");
         this.price = jsonObject.optLong("price");
         this.comment = jsonObject.optString("comment");
+    }
+
+    public Record(ParseRecord parseRecord) {
+        super();
+        this.key = parseRecord.getObjectId();
+        this.car_id = parseRecord.getString(ParseRecord.CAR_ID);
+        this.date = AppUtils.parseDate(parseRecord.getString(ParseRecord.DATE));
+        this.mileage = parseRecord.getInt(ParseRecord.MILEAGE);
+        this.serviceName = parseRecord.getString(ParseRecord.SERVICE_NAME);
+        this.price = parseRecord.getInt(ParseRecord.PRICE);
+        this.comment = parseRecord.getString(ParseRecord.COMMENT);
     }
 }
 

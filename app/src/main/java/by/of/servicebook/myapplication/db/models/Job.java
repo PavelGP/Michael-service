@@ -8,17 +8,19 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import by.of.servicebook.myapplication.parse.models.ParseJob;
+
 /**
  * Created by Pavel on 10.12.2014.
  */
 @Table(name = "jobs")
 public class Job extends Model {
 
-    @Column(name = "job_id")
-    public int job_id;
+    @Column(name = "key")
+    public String id;
 
     @Column(name = "record_id")
-    public int record_id;
+    public String record_id;
 
     @Column(name = "title")
     public String title;
@@ -34,9 +36,17 @@ public class Job extends Model {
 
     public Job(JSONObject jsonObject) {
         super();
-        this.job_id = jsonObject.optInt("job_id");
-        this.record_id = jsonObject.optInt("record_id");
+        this.id = jsonObject.optString("id");
+        this.record_id = jsonObject.optString("record_id");
         this.title = jsonObject.optString("title");
         this.price = jsonObject.optLong("job_price");
+    }
+
+    public Job(ParseJob parseJob) {
+        super();
+        this.id = parseJob.getObjectId();
+        this.record_id = parseJob.getString(ParseJob.RECORD_ID);
+        this.title = parseJob.getString(ParseJob.TITLE);
+        this.price = parseJob.getLong(ParseJob.PRICE);
     }
 }

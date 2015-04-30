@@ -56,7 +56,7 @@ public class RecordsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_records, container, false);
 
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int carId = sharedPreferences.getInt(AppConst.VEHICLE, 1);
+        String carId = sharedPreferences.getString(AppConst.VEHICLE, "");
         Car car = provider.getCarById(carId);
         TextView tvCar = (TextView) rootView.findViewById(R.id.tvCar);
         tvCar.setText(car.make + " " + car.model);
@@ -68,7 +68,7 @@ public class RecordsFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int recordId = ((Record)parent.getItemAtPosition(position)).key;
+                String recordId = ((Record)parent.getItemAtPosition(position)).key;
                 DetailRecordActivity.launch(getActivity(), recordId);
             }
         });

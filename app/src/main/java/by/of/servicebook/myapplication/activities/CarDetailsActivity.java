@@ -19,11 +19,11 @@ import by.of.servicebook.myapplication.db.DataProvider;
 public class CarDetailsActivity extends ActionBarActivity implements View.OnClickListener{
 
     public static final String CAR_ID = "car_id";
-    private final int DEFAULT_ID = 1;
+    private final String DEFAULT_ID = "";
     private Car car;
     private ProgressBar progressBar;
 
-    public static void launch(Context context, int carId){
+    public static void launch(Context context, String carId){
         Intent intent = new Intent(context, CarDetailsActivity.class);
         intent.putExtra(CarDetailsActivity.CAR_ID, carId);
         context.startActivity(intent);
@@ -72,9 +72,9 @@ public class CarDetailsActivity extends ActionBarActivity implements View.OnClic
     }
 
     private void initData(){
-        int carId = DEFAULT_ID;
+        String carId = DEFAULT_ID;
         if (getIntent() != null){
-            carId = getIntent().getExtras().getInt(CAR_ID, DEFAULT_ID);
+            carId = getIntent().getExtras().getString(CAR_ID, DEFAULT_ID);
         }
         car = DataProvider.getInstance().getCarById(carId);
     }

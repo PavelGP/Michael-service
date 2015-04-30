@@ -40,7 +40,7 @@ public class CarsAdapter extends ArrayAdapter<Car> {
         }
 
         final Car item = getItem(position);
-        int carId = preferences.getInt(AppConst.VEHICLE, -1);
+        String carId = preferences.getString(AppConst.VEHICLE, "");
         if (carId == item.key){
             viewHolder.chb.setChecked(true);
         } else {
@@ -55,7 +55,7 @@ public class CarsAdapter extends ArrayAdapter<Car> {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt(AppConst.VEHICLE, item.key);
+                editor.putString(AppConst.VEHICLE, item.key);
                 editor.apply();
                 CarsAdapter.this.notifyDataSetChanged();
             }

@@ -26,7 +26,6 @@ import by.of.servicebook.myapplication.utils.AppConst;
  */
 public class GarageFragment extends Fragment {
 
-    private Activity activity;
     CarsAdapter adapter;
     SharedPreferences sharedPreferences;
 
@@ -43,7 +42,6 @@ public class GarageFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.activity = activity;
         ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_GARAGE);
 
     }
@@ -54,10 +52,12 @@ public class GarageFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_newgarage, container, false);
 
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int car = sharedPreferences.getInt(AppConst.VEHICLE, -1);
-        if (car==-1){
+        String car = sharedPreferences.getString(AppConst.VEHICLE, "");
+
+        if (car.equals("")){
+            List<Car> carList = DataProvider.getInstance().getAllCars();
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(AppConst.VEHICLE, 1);
+            editor.putString(AppConst.VEHICLE, carList.get(0).key);
             editor.apply();
         }
 
@@ -76,7 +76,7 @@ public class GarageFragment extends Fragment {
     ListView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            int carId = adapter.getItem(position).key;
+            String carId = adapter.getItem(position).key;
 
             CarDetailsActivity.launch(getActivity(), carId);
         }

@@ -2,13 +2,11 @@ package by.of.servicebook.myapplication.commands;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -38,6 +36,11 @@ public class SaveToParse extends AsyncTask<Void,Void,Void> {
     protected Void doInBackground(Void... params) {
         DataProvider provider = DataProvider.getInstance();
         try {
+            ParseQuery<ParseUser> userParseQuery = ParseQuery.getQuery(ParseUser.class);
+            userParseQuery.whereEqualTo("username", "gulevichpavel@gmail.com");
+            ParseUser user = userParseQuery.getFirst();
+            ParseRelation<ParseCar> userToCarsRelation = user.getRelation("cars_relation");
+
             ParseQuery<ParseCar> carParseQuery = ParseQuery.getQuery(ParseCar.class);
             carParseQuery.whereEqualTo(ParseCar.VIN_CODE, car.vinCode);
 
@@ -48,6 +51,8 @@ public class SaveToParse extends AsyncTask<Void,Void,Void> {
                 parseCar = new ParseCar(car);
                 parseCar.save();
             }
+            userToCarsRelation.add(parseCar);
+            user.save();
 
             ParseRelation<ParseRecord> carToRecordsRelation = parseCar.getRelation(ParseCar.RECORDS_RELATION);
 

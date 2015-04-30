@@ -6,16 +6,18 @@ import com.activeandroid.annotation.Table;
 
 import org.json.JSONObject;
 
+import by.of.servicebook.myapplication.parse.models.ParseStatistic;
+
 /**
  * Created by Pavel on 22.04.2015.
  */
 @Table(name = "statistics")
 public class Statistic extends Model {
     @Column(name = "key")
-    public int key;
+    public String key;
 
     @Column(name = "car_id")
-    public int car_id;
+    public String car_id;
 
     @Column(name = "mileage")
     public int mileage;
@@ -48,7 +50,7 @@ public class Statistic extends Model {
         super();
     }
 
-    public Statistic(int key, int car_id, int mileage, int yearlyMileage, int monthlyMileage,
+    public Statistic(String key, String car_id, int mileage, int yearlyMileage, int monthlyMileage,
                      int dailyMileage, int allExp, int yearlyExp, int monthlyExp,
                      int dailyExp, int expPer100) {
         this.key = key;
@@ -66,8 +68,8 @@ public class Statistic extends Model {
 
     public Statistic(JSONObject jsonObject) {
         super();
-        this.key = jsonObject.optInt("id");
-        this.car_id = jsonObject.optInt("car_id");
+        this.key = jsonObject.optString("id");
+        this.car_id = jsonObject.optString("car_id");
         this.mileage = jsonObject.optInt("mileage");
         this.yearlyMileage = jsonObject.optInt("yearly_mileage");
         this.monthlyMileage = jsonObject.optInt("monthly_mileage");
@@ -77,5 +79,20 @@ public class Statistic extends Model {
         this.monthlyExp = jsonObject.optInt("monthly_exp");
         this.dailyExp = jsonObject.optInt("daily_exp");
         this.expPer100 = jsonObject.optInt("100km_exp");
+    }
+
+    public Statistic(ParseStatistic parseStatistic) {
+        super();
+        this.key = parseStatistic.getObjectId();
+        this.car_id = parseStatistic.getString(ParseStatistic.CAR_ID);
+        this.mileage = parseStatistic.getInt(ParseStatistic.MILEAGE);
+        this.yearlyMileage = parseStatistic.getInt(ParseStatistic.YEARLY_MILEAGE);
+        this.monthlyMileage = parseStatistic.getInt(ParseStatistic.MONTHLY_MILEAGE);
+        this.dailyMileage = parseStatistic.getInt(ParseStatistic.DAILY_MILEAGE);
+        this.allExp = parseStatistic.getInt(ParseStatistic.ALL_EXP);
+        this.yearlyExp = parseStatistic.getInt(ParseStatistic.YEARLY_EXP);
+        this.monthlyExp = parseStatistic.getInt(ParseStatistic.MONTHLY_EXP);
+        this.dailyExp = parseStatistic.getInt(ParseStatistic.DAILY_MILEAGE);
+        this.expPer100 = parseStatistic.getInt(ParseStatistic.EXP_PER_100KM);
     }
 }

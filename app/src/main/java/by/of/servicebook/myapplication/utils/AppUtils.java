@@ -4,6 +4,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.format.DateFormat;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 /**
  * Created by Pavel on 28.04.2015.
@@ -31,6 +41,25 @@ public class AppUtils {
     public static long getTimeStamp(Context context){
         SharedPreferences preferences = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         return preferences.getLong(APP_TIMESTAMP, 0);
+    }
+
+    public static long parseDate(String date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date convertedDate;
+        try {
+            convertedDate = dateFormat.parse(date);
+            return convertedDate.getTime();
+        } catch (ParseException e) {
+            Log.e("parseDate", "Warning! Parse date EXCEPTION: " + date);
+        }
+        return -1;
+    }
+
+    public static String dateToString(long time){
+        Calendar cal = new GregorianCalendar();
+        cal.setTimeInMillis(time);
+        String date = DateFormat.format("dd-MM-yyyy", cal).toString();
+        return date;
     }
 
 }

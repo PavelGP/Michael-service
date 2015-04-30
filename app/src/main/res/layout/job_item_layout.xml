@@ -35,7 +35,7 @@
             android:minHeight="32dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:gravity="center_vertical|left"
-            android:text="@string/dollar"/>
+            android:text="@string/rubles"/>
     </LinearLayout>
 
     <LinearLayout

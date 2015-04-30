@@ -48,7 +48,7 @@ public class StatisticFragment extends Fragment {
 
         //init car make and model
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int carId = sharedPreferences.getInt(AppConst.VEHICLE, 1);
+        String carId = sharedPreferences.getString(AppConst.VEHICLE, "");
         Car car = provider.getCarById(carId);
         TextView tvCar = (TextView) rootView.findViewById(R.id.tvCar);
         tvCar.setText(car.make + " " + car.model);
@@ -58,8 +58,9 @@ public class StatisticFragment extends Fragment {
         return rootView;
     }
 
-    private void initViews(View v, int carId){
+    private void initViews(View v, String carId){
         Statistic stat = provider.getCarStatisticById(carId);
+        if (stat == null) return;
 
         TextView tvCurrentMileage = (TextView) v.findViewById(R.id.tvCurrentMileage);
         TextView tvMileagePerYear = (TextView) v.findViewById(R.id.tvMileagePerYear);

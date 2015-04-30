@@ -6,6 +6,8 @@ import com.activeandroid.annotation.Table;
 
 import org.json.JSONObject;
 
+import by.of.servicebook.myapplication.parse.models.ParseCar;
+
 /**
  * Created by Pavel on 21.04.2015.
  */
@@ -13,7 +15,7 @@ import org.json.JSONObject;
 public class Car  extends Model {
 
     @Column(name = "key")
-    public int key;
+    public String key;
 
     @Column(name = "make")
     public String make;
@@ -44,7 +46,7 @@ public class Car  extends Model {
     }
 
     public Car(JSONObject jsonObject){
-        this.key = jsonObject.optInt("id");
+        this.key = jsonObject.optString("id");
         this.make = jsonObject.optString("make");
         this.model = jsonObject.optString("model");
         this.year = jsonObject.optInt("year");
@@ -53,5 +55,17 @@ public class Car  extends Model {
         this.color = jsonObject.optString("color");
         this.regDate = jsonObject.optString("reg_date");
         this.regMileage = jsonObject.optInt("reg_mileage");
+    }
+
+    public Car(ParseCar parseCar){
+        this.key = parseCar.getObjectId();
+        this.make = parseCar.getString(ParseCar.MAKE);
+        this.model = parseCar.getString(ParseCar.MODEL);
+        this.year = parseCar.getInt(ParseCar.YEAR);
+        this.regNumber = parseCar.getString(ParseCar.REG_NUMBER);
+        this.vinCode = parseCar.getString(ParseCar.VIN_CODE);
+        this.color = parseCar.getString(ParseCar.COLOR);
+        this.regDate = parseCar.getString(ParseCar.REG_DATE);
+        this.regMileage = parseCar.getInt(ParseCar.REG_MILEAGE);
     }
 }

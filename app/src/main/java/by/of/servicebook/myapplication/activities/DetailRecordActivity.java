@@ -16,13 +16,14 @@ import java.util.Formatter;
 import by.of.servicebook.myapplication.R;
 import by.of.servicebook.myapplication.db.models.Record;
 import by.of.servicebook.myapplication.db.DataProvider;
+import by.of.servicebook.myapplication.utils.AppUtils;
 
 public class DetailRecordActivity extends ActionBarActivity {
-    private final int DEFAUL_RECORD_ID = 1;
+    private final String DEFAUL_RECORD_ID = "";
     private static final String RECORD_ID = "record_id";
     private Record record;
 
-    public static void launch(Context context, int recordId){
+    public static void launch(Context context, String recordId){
         Intent intent = new Intent(context, DetailRecordActivity.class);
         intent.putExtra(RECORD_ID, recordId);
         context.startActivity(intent);
@@ -52,9 +53,9 @@ public class DetailRecordActivity extends ActionBarActivity {
         TextView tvDetailPrice = (TextView) findViewById(R.id.detail_price);
 
         tvServiceName.setText(record.serviceName);
-        tvDate.setText(record.date);
-        tvMileage.setText(Integer.toString(record.mileage));
-        tvPrice.setText(Long.toString(record.price));
+        tvDate.setText(AppUtils.dateToString(record.date));
+        tvMileage.setText(String.format("%,d",record.mileage));
+        tvPrice.setText(String.format("%,d",record.price));
         if (record.comment.equals("")){
             tvCommentTitle.setVisibility(View.GONE);
             tvCommentDescription.setVisibility(View.GONE);
@@ -99,12 +100,13 @@ public class DetailRecordActivity extends ActionBarActivity {
     }
 
     private void initData(){
-        int recordId = DEFAUL_RECORD_ID;
+        String recordId = DEFAUL_RECORD_ID;
         if (getIntent() != null) {
-            recordId = getIntent().getExtras().getInt(RECORD_ID, 1);
+            recordId = getIntent().getExtras().getString(RECORD_ID, DEFAUL_RECORD_ID);
         }
-
-        record = DataProvider.getInstance().getRecord(recordId);
+        if (recordId != DEFAUL_RECORD_ID) {
+            record = DataProvider.getInstance().getRecord(recordId);
+        }
     }
 
     private void setToolbar(){
