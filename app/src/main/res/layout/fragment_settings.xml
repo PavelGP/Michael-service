@@ -42,7 +42,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:text="@string/terms_of_use"/>
+            android:text="@string/terms_of_use_title"/>
 
         <View
             android:layout_width="match_parent"
