@@ -129,10 +129,13 @@ public class MainActivity extends ActionBarActivity
         } else {
             Log.w(getClass().getName(), "mToolbar == null");
             mToolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(mToolbar);
-            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-            mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mToolbar);
-            mToolbar.setTitle(mTitle);
+            //TODO NPE
+            if (mToolbar != null) {
+                setSupportActionBar(mToolbar);
+                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+                mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mToolbar);
+                mToolbar.setTitle(mTitle);
+            }
         }
 
     }
