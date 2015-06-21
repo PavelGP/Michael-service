@@ -37,7 +37,7 @@ public class StatisticFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_STATISTIC);
+//        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_STATISTIC);
 
     }
 

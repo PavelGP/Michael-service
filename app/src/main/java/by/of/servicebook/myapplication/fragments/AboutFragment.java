@@ -32,7 +32,7 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
-        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_ABOUT);
+//        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_ABOUT);
 
     }
 

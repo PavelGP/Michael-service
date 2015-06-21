@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,8 +19,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
+import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -39,8 +44,14 @@ public class GarageFragment extends Fragment {
     private final int PICK_PHOTO_REQCODE = 100;
     private final int CAPTURE_IMAGE_REQCODE = 101;
 
+    private final String IMAGE_STATE = "image_state";
+    private final String DOC_STATE = "doc_state";
+    private final String EMAIL_STATE = "email_state";
+
     private ImageView ivDoc;
     private EditText etEmail;
+    private ProgressBar mProgress;
+    private Button btnFile, btnCamera, btnSend;
 
     private ParseFile mDocFile;
     private String mClientEmail, mServiceId, mServiceName;
@@ -58,9 +69,15 @@ public class GarageFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_GARAGE);
+//        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_GARAGE);
 
     }
 
@@ -68,12 +85,13 @@ public class GarageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_newgarage, container, false);
-
+        Log.d("TAG", "onCreateView()");
         ivDoc = (ImageView) v.findViewById(R.id.ivDoc);
         etEmail = (EditText) v.findViewById(R.id.etEmail);
+        mProgress = (ProgressBar) v.findViewById(R.id.progress);
 
         //pick image
-        Button btnFile = (Button) v.findViewById(R.id.btnFile);
+        btnFile = (Button) v.findViewById(R.id.btnFile);
         btnFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +100,7 @@ public class GarageFragment extends Fragment {
         });
 
         //capture image
-        Button btnCamera = (Button) v.findViewById(R.id.btnCamera);
+        btnCamera = (Button) v.findViewById(R.id.btnCamera);
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,15 +108,52 @@ public class GarageFragment extends Fragment {
             }
         });
 
-        Button btnSend = (Button) v.findViewById(R.id.btnSend);
+        btnSend = (Button) v.findViewById(R.id.btnSend);
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendClientInfo();
             }
         });
+
+        restoreInstanceState(savedInstanceState);
         return v;
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        //save image
+        if (ivDoc.getDrawable() != null) {
+            Bitmap bitmap = ((BitmapDrawable) ivDoc.getDrawable()).getBitmap();
+            if (bitmap != null) {
+                outState.putParcelable(IMAGE_STATE, bitmap);
+            }
+        }
+
+        //save email
+        outState.putString(EMAIL_STATE, etEmail.getText().toString());
+
+        super.onSaveInstanceState(outState);
+    }
+
+    private void restoreInstanceState(Bundle savedInstanceState){
+        if (savedInstanceState == null) return;
+        //restore image
+        if (savedInstanceState.getParcelable(IMAGE_STATE) != null){
+            Bitmap bitmap = savedInstanceState.getParcelable(IMAGE_STATE);
+            ivDoc.setImageBitmap(bitmap);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            mDocFile = new ParseFile(byteArray);
+        }
+        //restore email
+        if (savedInstanceState.getString(EMAIL_STATE) != null){
+            etEmail.setText(savedInstanceState.getString(EMAIL_STATE));
+        }
+    }
+
+
 
     private void pickImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -111,6 +166,13 @@ public class GarageFragment extends Fragment {
 
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_REQCODE);
+    }
+
+    private void setControlsEnabled(boolean isEnable){
+        etEmail.setEnabled(isEnable);
+        btnFile.setEnabled(isEnable);
+        btnCamera.setEnabled(isEnable);
+        btnSend.setEnabled(isEnable);
     }
 
     private void sendClientInfo(){
@@ -135,7 +197,24 @@ public class GarageFragment extends Fragment {
 
         mDocFile.saveInBackground();
         ParseService parseService = new ParseService("service_id", "service_name", etEmail.getText().toString(), mDocFile);
-        parseService.saveInBackground();
+        mProgress.setVisibility(View.VISIBLE);
+        setControlsEnabled(false);
+        parseService.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                mProgress.setVisibility(View.GONE);
+                setControlsEnabled(true);
+                if (e == null){
+                    NoticeDialogFragment.newInstance("", getString(R.string.upload_success), null)
+                            .show(getFragmentManager(), null);
+                    Log.d("TAG", "save file success!");
+                } else {
+                    NoticeDialogFragment.newInstance("", getString(R.string.upload_failed), null)
+                            .show(getFragmentManager(), null);
+                    Log.e("TAG", "Error");
+                }
+            }
+        });
     }
 
     @Override

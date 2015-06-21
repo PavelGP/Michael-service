@@ -46,7 +46,7 @@ public class RecordsFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
-        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_RECORDS);
+//        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_RECORDS);
 
     }
 

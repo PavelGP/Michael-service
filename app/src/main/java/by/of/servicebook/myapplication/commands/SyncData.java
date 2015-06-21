@@ -43,8 +43,12 @@ public class SyncData extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void[] params) {
         ParseUser user = ParseUser.getCurrentUser();
-
-        startDownload(user);
+        try {
+            Thread.sleep(2000);
+        } catch(InterruptedException e){
+            e.printStackTrace();
+        }
+//        startDownload(user);
         return null;
     }
 

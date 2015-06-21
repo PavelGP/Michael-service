@@ -26,6 +26,8 @@
     <string name="not_valid_email">Введите корректный email адрес</string>
     <string name="no_file">Отсутствует отправляемый файл</string>
     <string name="warning">Внимание!</string>
+    <string name="upload_success">Файл успешно загружен на сервер!</string>
+    <string name="upload_failed">Файл НЕ загружен!!!</string>
 
 
     <!-- activity_terms_of_use.xml -->

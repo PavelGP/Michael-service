@@ -22,8 +22,7 @@ import by.of.servicebook.myapplication.fragments.SettingsFragment;
 import by.of.servicebook.myapplication.fragments.StatisticFragment;
 
 
-public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends ActionBarActivity{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -47,13 +46,13 @@ public class MainActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mNavigationDrawerFragment =(NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+//        mNavigationDrawerFragment =(NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mToolbar);
+//        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mToolbar);
 
 
     }
@@ -76,10 +75,10 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
+//        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    @Override
+    /*@Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
@@ -107,9 +106,9 @@ public class MainActivity extends ActionBarActivity
                 break;
         }
 
-    }
+    }*/
 
-    public void onSectionAttached(int number) {
+    /*public void onSectionAttached(int number) {
         switch (number) {
             case 1:
                 mTitle = getString(R.string.fragment_title_garage);
@@ -138,7 +137,7 @@ public class MainActivity extends ActionBarActivity
             }
         }
 
-    }
+    }*/
 
 
 

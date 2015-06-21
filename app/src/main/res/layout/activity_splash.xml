@@ -19,7 +19,7 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@id/tvDescription"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="48sp"
+        android:textSize="40sp"
         android:textStyle="bold|italic"
         android:text="@string/app_name"/>
 

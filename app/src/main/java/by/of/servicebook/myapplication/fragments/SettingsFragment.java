@@ -39,7 +39,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
-        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_SETTINGS);
+//        ((MainActivity) activity).onSectionAttached(AppConst.FRAGMENT_SETTINGS);
 
     }
 
